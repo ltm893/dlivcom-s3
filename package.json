@@ -1,11 +1,21 @@
 {
   "name": "dlivcom",
   "version": "1.0.0",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.465.0",
+    "@aws-sdk/credential-providers": "^3.465.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.3",
+    "path-browserify": "^1.0.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
