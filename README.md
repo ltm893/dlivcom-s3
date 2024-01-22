@@ -4,3 +4,5 @@
 * Weback build
   * npm run build
   * Deploy whats in dist directory
+* local webserver to test
+  * node server.js
