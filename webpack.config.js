@@ -10,6 +10,7 @@ module.exports = {
     path: __dirname,
     filename: './dist/bundle.js'
   },
+  mode: 'production' ,
   plugins: [
     new HtmlWebpackPlugin({
         template: 'src/index.html',

@@ -65,24 +65,9 @@ const getPhotosUrl = async  (albumName ) => {
 }
 
 async function  getPhotosSdk(album) {
-  const client = new /({
+  const client = new S3Client({
     region: "us-east-1",
-    // Unless you have a public bucket, you'll need access to a private bucket.
-    // One way to do this is to create an Amazon Cognito identity pool, attach a role to the pool,
-    // and grant the role access to the 's3:GetObject' action.
-    //
-    // You'll also need to configure the CORS settings on the bucket to allow traffic from
-    // this example site. Here's an example configuration that allows all origins. Don't
-    // do this in production.
-    //[
-    //  {
-    //    "AllowedHeaders": ["*"],
-    //    "AllowedMethods": ["GET"],
-    //    "AllowedOrigins": ["*"],
-    //    "ExposeHeaders": [],
-    //  },
-    //]
-    //
+    
     credentials: fromCognitoIdentityPool({
       clientConfig: { region: "us-east-1" },
       identityPoolId: "us-east-1:ee4db425-cb51-4c10-a6d9-2e0e45f6fb87"
@@ -109,14 +94,12 @@ async function  getPhotosSdk(album) {
     while (isTruncated) {
       const { IsTruncated, NextContinuationToken, Contents } =  await client.send(command);
       const result =  await client.send(command);
-      console.log(result) ;
+    
       const response = await client.send(command); 
-      console.log (response) ; 
+      
    
       isTruncated = IsTruncated;
-      console.log(IsTruncated) ; 
-      console.log(NextContinuationToken) ; 
-      console.log(Contents) ; 
+     
 
       command.input.ContinuationToken = NextContinuationToken;
       photos = Contents.map(function (photo) {
